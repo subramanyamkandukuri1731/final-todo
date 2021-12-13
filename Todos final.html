@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>final</title>
+    <style>
+        .list-group-item{
+            display: flex;
+            justify-content: space-between;
+        } 
+            .m1{
+                display:flex;
+                justify-content: space-around;
+            }
+            body{
+                background-color: aquamarine;
+            }
+            .n1{
+                display:flex;
+                justify-content: space-around;
+            }
+            .a1{
+                background-color: skyblue;
+            }
+
+
+
+           
+        .filtered{
+            display: none !important;
+        }
+   
+
+    </style>
+  </head>
+  <body>
+      <div class="container">
+      <div class="jumbotron a1">
+        
+      <h2 class="text-danger n1">
+          TO DO LISTS
+      </h2>
+    
+      
+      <div class="container">
+        <form class="j2">
+            <input class="form-control"type="text" name="search" id="" placeholder="Search a todo here">
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    <ul class="list-group">
+        <li class="list-group-item ">LIST1
+           <i class="fa fa-trash"></i></li>
+           <li class="list-group-item ">LIST2
+            <i class="fa fa-trash"></i> </li>
+            <li class="list-group-item ">LIST3
+                <i class="fa fa-trash"></i> </li>
+              
+       
+      </ul>
+      
+      &nbsp;
+
+      <h3 class="m1 text-secondary">Enter Your To Do Here</h3>
+      <form class="j3">
+        <input type="text"class="form-control" name="adding" id="i2" placeholder="enter a to do you want to add">
+       
+        </form>
+        <p><h5></h5>If you want to delete the to do click on the delete icon</h5></p>
+       </div>
+       <script>
+          
+           var icon=document.querySelector('.fa');
+           var f1=document.querySelector('.j3');
+           var f2=document.querySelector('.j2');
+           var b1=document.querySelector('ul');
+           var i1=document.querySelector('#i2');
+           f1.addEventListener('submit',function(e){
+               e.preventDefault();
+               var g=(f1.adding.value);
+               const d=`<li class="list-group-item ">${g}
+                <i class="fa fa-trash"></i> </li>`;
+               b1.innerHTML+=d;
+               f1.reset();
+           }
+           )
+           b1.addEventListener('click',function(e){
+              if(e.target.classList.contains('fa-trash'))
+                {
+                    e.target.parentElement.remove();
+                }
+              
+           })
+
+
+
+
+           function fun(m1){
+        //console.log(Array.from(a.children));
+        var arr=Array.from(b1.children);
+        arr.filter(function(s1){
+            return(!s1.textContent.toLowerCase().includes(m1));
+        })
+
+        .forEach(function(s2){
+            console.log(s2.classList.add('filtered'));
+        })
+        arr.filter(function(s1){
+            return(s1.textContent.includes(m1));
+        })
+
+        .forEach(function(s2){
+            console.log(s2.classList.remove('filtered'));
+        })
+
+
+    }
+f2.addEventListener('keyup',function(e){
+  fun(f2.search.value);
+   
+    e.preventDefault();
+    const e2=b1.search.value.toLowerCase().trim();
+    filterTodo(e2);
+})
+
+
+
+
+
+       </script>
+      
+      </div>
+      </div>
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
